@@ -39,21 +39,21 @@ export const SignIn = () => {
   const location = useLocation()
 
 
-  
+
   const checkEmail = (event) => {
     event.preventDefault()
     let email = event.currentTarget
     let len = email.length
-    if(len > 1)
+    if (len > 1)
       setemailReq(false)
   }
 
-  const checkPassword = (event) => { 
+  const checkPassword = (event) => {
     event.preventDefault()
-    let password = event.currentTarget   
+    let password = event.currentTarget
     let len = password.length
-    if(len > 1)
-      setpasswordReq(false) 
+    if (len > 1)
+      setpasswordReq(false)
   }
 
 
@@ -98,16 +98,16 @@ export const SignIn = () => {
     let password = data.get('password') !== "" ? data.get('password') : "null"
 
     //check validation
-    if(email == "null")
-        setemailReq(true)
-    if(password == "null")
+    if (email == "null")
+      setemailReq(true)
+    if (password == "null")
       setpasswordReq(true)
-    
+
     let len = email.length
     let correctEmail1 = ['@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm']
     let correctEmail2 = ['.', 'o', 'r', 'g', '.', 'i', 'l']
 
-   
+
 
     if (email === MANAGER_EMAIL && password === MANAGER_PASSWODR) {
       dispatch(setManager(true))
@@ -147,51 +147,59 @@ export const SignIn = () => {
           </Typography>
           <Box component="form" onSubmit={Connect} noValidate sx={{ mt: 1 }}>
             <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              onChange={checkEmail}
-              
+              error
+              id="outlined-error-helper-text"
+              label="Error"
+              defaultValue="Hello World"
+              helperText="Incorrect entry."
             />
-            {emailReq && <div style={{'color': "red"}}>Email is required.</div>}
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={checkPassword}             
-            />
-            {passwordReq && <div style={{'color': "red"}}>Password is required.</div>}
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link to="/signUp">
-                  Don't have an account? Sign Up
-                </Link>
-              </Grid>
+          <TextField 
+          error
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            helperText="Incorrect entry."
+            onChange={checkEmail}
+          />
+          {emailReq && <div style={{ 'color': "red" }}>Email is required.</div>}
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={checkPassword}
+          />
+          {passwordReq && <div style={{ 'color': "red" }}>Password is required.</div>}
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link to="/signUp">
+                Don't have an account? Sign Up
+              </Link>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
-      </Container>
-    </ThemeProvider>
+      </Box>
+    </Container>
+    </ThemeProvider >
   );
 }
