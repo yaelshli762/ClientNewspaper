@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import './home.css'
 import { Button } from "@mui/material"
+import Nav from "../nav"
 
 export const Home = () => {
+
+    //signIn signOut טענתי שוב כיוון שאני רוצה היתחלף חזרה ל 
+    <Nav></Nav>
 
     const navigate = useNavigate()
 

@@ -20,13 +20,13 @@ import { useSelector } from 'react-redux';
 
 
 export const Nav = () => {
-
+ debugger
     // משתמש למעבר בין הקומפוננטות
     const navigate = useNavigate()
     // מערך שמכיל את קישורי הקומפוננטות שאליהם נעבור דרת ה nav
-    const [links, setLinks] = useState(['./', 'about', 'newspaperArchive', 'signIn', 'signUp', 'advertisingOrder', 'boardAd'])
+    const [links, setLinks] = useState(['./', 'about', 'newspaperArchive','advertisingOrder', 'boardAd', 'signIn', 'signUp', ])
     // מערך שמכיל את השמות שיוצגו בתפריט הראשי nav
-    const [navItems, setNavItems] = useState(['Home', 'About', 'Newspaper archive', 'Sign In', 'Sign Up', 'Advertising Order', 'board ad'])
+    const [navItems, setNavItems] = useState(['Home', 'About', 'Newspaper archive', 'Advertising Order', 'board ad', 'Sign In', 'Sign Up'])
     // קבוע שמציין אתה גודל הרוחב של התפריט הצדדי שיפתח במצב של מסך קטן
     const DRAWERWIDTH = 240;
     // משתנה שמכיל את התשובה האם לפתוח תפריט צדדי
@@ -54,9 +54,13 @@ export const Nav = () => {
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
-
+    
     // פונקציה שמעבירה לקומפוננטה אחרת
     const anotherSubject = (index) => {
+        if(links[index] == 'signIn' || links[index] == 'signUp'){
+            setLinks(['./', 'about', 'newspaperArchive','advertisingOrder', 'boardAd', 'signOut']);
+            setNavItems(['Home', 'About', 'Newspaper archive', 'Advertising Order', 'board ad', 'Sign Out']);
+        }
         navigate(`/${links[index]}`)
     }
 

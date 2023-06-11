@@ -13,6 +13,7 @@ import { SignIn } from "./signIn";
 import { MagazineClosing } from "./magazineClosing";
 import { SignUp } from "./signUp";
 import Flipbook from "./show/Flipbook";
+import { SignOut } from "./signOut";
 
 export const Routings = () => {
     return (
@@ -28,6 +29,7 @@ export const Routings = () => {
                 <Route path="logIn" element={<LogIn />}></Route>
                 <Route path="signUp" element={<SignUp />}></Route>
                 <Route path="signIn" element={<SignIn />}></Route>
+                <Route path="signOut" element={<SignOut/>}></Route>
                 <Route path="magazineClosing" element={<MagazineClosing />}></Route>
                 <Route path="flipbook" element={<Flipbook />}></Route>
             </Route>
